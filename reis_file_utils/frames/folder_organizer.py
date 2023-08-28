@@ -1,8 +1,10 @@
 import os
 import shutil
-from .utils.tkinterutils import select_file, select_folder
-from .utils.color_printer import Cprint
-from .utils.yamlutils import load_yaml
+
+from reis_file_utils.utils.reis_gui import AppFrame
+from ..utils.reis_gui import AppGUI, Widget
+from ..utils.color_printer import Cprint
+from ..utils.yamlutils import load_yaml
 
 
 def get_unique_filename(target_folder, filename):
@@ -48,16 +50,36 @@ def organize_folder(yaml_map: dict, folder_path: str):
                 organize_files(subcategory_folder, extensions, folder_path)
 
 
-def run():
-    yaml_path = select_file("Select yaml mapping file")
-    if yaml_path == "":
-        return
-    folder_path = select_folder("Select folder to organize")
-    if folder_path == "":
-        return
-    userApproved = True if input(f"Using map from '{yaml_path}' to organize files in '{folder_path}' (Y/N):\n").upper() == "Y" else False
+# def run():
+#     yaml_path = AppGUI.select_file("Select yaml mapping file")
+#     if yaml_path == "":
+#         return
+#     folder_path = AppGUI.select_folder("Select folder to organize")
+#     if folder_path == "":
+#         return
+#     userApproved = (
+#         True
+#         if input(
+#             f"Using map from '{yaml_path}' to organize files in '{folder_path}' (Y/N):\n"
+#         ).upper()
+#         == "Y"
+#         else False
+#     )
+
+#     if userApproved:
+#         yaml_map = load_yaml(yaml_path)
+#         organize_folder(yaml_map, folder_path)
+#         Cprint.print("Folder organized.", Cprint.GREEN)
+
+
+class FolderOrganizerFrame(AppFrame):
+    def __init__(self, master=None, **kwargs):
+        super().__init__(master, **kwargs)
+        widgets = [
+            Widget(widget_type="file_prompt", display_name="Select map file:"),
+            Widget(widget_type="folder_prompt", display_name="Select folder:"),
+            Widget(widget_type="button", display_name="Organize", function=None)
+        ]
+        self.create_widgets(widgets)
+
     
-    if userApproved:
-        yaml_map = load_yaml(yaml_path)
-        organize_folder(yaml_map, folder_path)
-        Cprint.print("Folder organized.", Cprint.GREEN)
