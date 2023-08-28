@@ -1,0 +1,30 @@
+images:
+  - "png"
+  - "jpg"
+  - "jpeg"
+  - "gif"
+  - "svg"
+video:
+  - "mp4"
+audio:
+  - "mp3"
+  - "wav"
+documents:
+  - "doc"
+  - "docx"
+  - "ppt"
+  - "pptx"
+  - "xls"
+  - "xlsx"
+  - "pdf"
+zips:
+  - "zip"
+  - "tar"
+torrent:
+  files:
+  links:
+    - "tor"
+setup:
+  - "exe"
+  - "msi"
+  - "iso"
