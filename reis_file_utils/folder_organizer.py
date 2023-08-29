@@ -62,13 +62,3 @@ class FolderOrganizer:
 
     def run(self):
         self._organize_folder()
-
-
-def folder_organizer_handler(window, values):
-    selected_file = values["-FILE-"]
-    selected_folder = values["-FOLDER-"]
-    window["-FEEDBACK-"].update("Organizing... Please wait.")
-    window.refresh()
-    thread = Thread(target=FolderOrganizer(selected_file, selected_folder).run)
-    thread.start()
-    return thread
