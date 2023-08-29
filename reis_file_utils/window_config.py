@@ -1,25 +1,31 @@
 import PySimpleGUI as sg
 
+# Styles
+TITLE = "Rei's File Utils"
+TITLE_FONT = ("Any", 13, "bold")
+BUTTON_FONT = ("Any", 13)
+MIN_WIDTH = 50
+ICON = "icon.ico"
+# Pages
 MAIN_MENU = "Main Menu"
 FOLDER_ORGANIZER = "Folder Organizer"
 FILE_TRANSLITERATION = "File Transliteration"
 DELETE_EMPTY_DIRS = "Delete Empty Directories"
-MIN_WIDTH = 50
-ICON = "icon.ico"
+
 
 def main_menu_layout():
     return [
-        [sg.Text(MAIN_MENU)],
+        [sg.Text(MAIN_MENU, font=TITLE_FONT)],
         [sg.Text("", size=(MIN_WIDTH, 0))],
-        [sg.Button(FOLDER_ORGANIZER)],
-        [sg.Button(FILE_TRANSLITERATION)],
-        [sg.Button(DELETE_EMPTY_DIRS)],
+        [sg.Button(FOLDER_ORGANIZER, font=BUTTON_FONT)],
+        [sg.Button(FILE_TRANSLITERATION, font=BUTTON_FONT)],
+        [sg.Button(DELETE_EMPTY_DIRS, font=BUTTON_FONT)],
     ]
 
 
 def folder_organizer_layout():
     return [
-        [sg.Text(FOLDER_ORGANIZER)],
+        [sg.Text(FOLDER_ORGANIZER, font=TITLE_FONT)],
         [sg.Text("", size=(MIN_WIDTH, 0))],
         [
             sg.Text("Select a File:", size=(12, 1)),
@@ -35,32 +41,32 @@ def folder_organizer_layout():
             sg.Button("Organize", key="Organize"),
             sg.Text("", size=(20, 0), key="-FEEDBACK-"),
         ],
-        [sg.Button("Back", key=MAIN_MENU)],
+        [sg.Button("Back", key=MAIN_MENU, font=BUTTON_FONT)],
     ]
 
 
 def file_transliteration_layout():
     return [
-        [sg.Text(FILE_TRANSLITERATION)],
+        [sg.Text(FILE_TRANSLITERATION, font=TITLE_FONT)],
         [sg.Text("", size=(MIN_WIDTH, 0))],
-        [sg.Button("Back", key=MAIN_MENU)],
+        [sg.Button("Back", key=MAIN_MENU, font=BUTTON_FONT)],
     ]
 
 
 def delete_empty_dirs_layout():
     return [
-        [sg.Text(DELETE_EMPTY_DIRS)],
+        [sg.Text(DELETE_EMPTY_DIRS, font=TITLE_FONT)],
         [sg.Text("", size=(MIN_WIDTH, 0))],
-        [sg.Button("Back", key=MAIN_MENU)],
+        [sg.Button("Back", key=MAIN_MENU, font=BUTTON_FONT)],
     ]
 
 
 LAYOUT_CONFIG = {
-    MAIN_MENU: {"title": MAIN_MENU, "layout": main_menu_layout},
-    FOLDER_ORGANIZER: {"title": FOLDER_ORGANIZER, "layout": folder_organizer_layout},
+    MAIN_MENU: {"title": TITLE, "layout": main_menu_layout},
+    FOLDER_ORGANIZER: {"title": TITLE, "layout": folder_organizer_layout},
     FILE_TRANSLITERATION: {
-        "title": FILE_TRANSLITERATION,
+        "title": TITLE,
         "layout": file_transliteration_layout,
     },
-    DELETE_EMPTY_DIRS: {"title": DELETE_EMPTY_DIRS, "layout": delete_empty_dirs_layout},
+    DELETE_EMPTY_DIRS: {"title": TITLE, "layout": delete_empty_dirs_layout},
 }
