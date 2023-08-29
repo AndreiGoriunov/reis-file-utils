@@ -15,26 +15,29 @@ class GUI:
         window_details = LAYOUT_CONFIG.get(self.current_window, {})
         title = window_details.get("title", "")
         layout = window_details.get("layout", [])()
+
         # Create the window without specifying the location
         if self.location:
-            self.window = sg.Window(title, layout, location=self.location)
+            new_window = sg.Window(title, layout, icon=ICON, location=self.location)
         else:
-            self.window = sg.Window(title, layout)
+            new_window = sg.Window(title, layout, icon=ICON)
+
+        self.window = new_window
 
     def _main_loop(self):
         while True:
-            self.event, self.values = self.window.read()
-            if not self.event == sg.WINDOW_CLOSED:
+            event, values = self.window.read()
+            if not event == sg.WINDOW_CLOSED:
                 self.location = self.window.CurrentLocation()
-            # Handle the event
-            if self.event == sg.WINDOW_CLOSED:
+            # Handle the events
+            if event == "Organize":
+                folder_organizer_handler(self.window, values)
+            elif event in LAYOUT_CONFIG:
+                self.window.close()
+                self.current_window = event
+                self._create_new_window()
+            elif event == sg.WINDOW_CLOSED:
                 self.window.close()
                 break
-            elif self.event == "Organize":
-                folder_organizer_handler(self.window, self.values)
-            elif self.event in LAYOUT_CONFIG:
-                self.window.close()
-                self.current_window = self.event
-                self._create_new_window()
             else:
                 pass

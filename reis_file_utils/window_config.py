@@ -5,7 +5,7 @@ FOLDER_ORGANIZER = "Folder Organizer"
 FILE_TRANSLITERATION = "File Transliteration"
 DELETE_EMPTY_DIRS = "Delete Empty Directories"
 MIN_WIDTH = 50
-
+ICON = "icon.ico"
 
 def main_menu_layout():
     return [

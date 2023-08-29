@@ -1,5 +1,3 @@
-from ..utils.reis_gui import AppGUI
-from ..utils.color_printer import Cprint
 from os import listdir, path, walk, rmdir
 
 
