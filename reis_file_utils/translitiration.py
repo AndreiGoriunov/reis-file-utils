@@ -1,9 +1,5 @@
 import os
 
-from ..utils.reis_gui import AppGUI
-from ..utils.yamlutils import load_yaml
-
-
 def translitirate(text: str, translit_map: dict) -> str:
     name, extension = os.path.splitext(text)
 
