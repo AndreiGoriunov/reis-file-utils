@@ -4,8 +4,24 @@ images:
   - "jpeg"
   - "gif"
   - "svg"
+  - "webp"
+  - "heif"
+  - "avif"
+  - "tiff"
+  - "bmp"
 video:
   - "mp4"
+  - "avi"
+  - "webm"
+  - "flv"
+  - "mkv"
+  - "ogg"
+  - "gifv"
+  - "mov"
+  - "qt"
+  - "wmv"
+  - "m4p"
+  - "m4v"
 audio:
   - "mp3"
   - "wav"
@@ -17,14 +33,18 @@ documents:
   - "xls"
   - "xlsx"
   - "pdf"
-zips:
+  - "txt"
+archives:
   - "zip"
   - "tar"
+  - "rar"
+  - "iso"
+  - "gz"
+  - "7z"
+  - "apk"
+  - "jar"
 torrent:
-  files:
-  links:
-    - "tor"
+  - "tor"
 setup:
   - "exe"
   - "msi"
-  - "iso"

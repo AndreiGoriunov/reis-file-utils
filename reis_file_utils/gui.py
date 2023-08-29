@@ -6,23 +6,25 @@ from reis_file_utils.window_config import *
 
 class GUI:
     def __init__(self):
-        self.current_window = MAIN_MENU
-        self.location = None
+        self.current_window: str = MAIN_MENU
+        self.locationz: tuple | None = None
         self._create_new_window()
         self._main_loop()
 
     def _create_new_window(self):
-        window_details = LAYOUT_CONFIG.get(self.current_window, {})
-        title = window_details.get("title", "")
-        layout = window_details.get("layout", [])()
+        window_details: dict = LAYOUT_CONFIG.get(self.current_window, {})
+        title: str = window_details.get("title", "")
+        layout: str = window_details.get("layout", [])()
 
         # Create the window without specifying the location
         if self.location:
-            new_window = sg.Window(title, layout, icon=ICON, location=self.location)
+            new_window = sg.Window(
+                title, layout, icon=ICON, location=self.location
+            )
         else:
             new_window = sg.Window(title, layout, icon=ICON)
 
-        self.window = new_window
+        self.window: sg.Window = new_window
 
     def _main_loop(self):
         while True:

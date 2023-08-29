@@ -1,6 +1,8 @@
 from os import listdir, path, walk, rmdir
 
-
+class DeleteEmptyDirs:
+    def __init__(self) -> None:
+        pass
 # def walk_dir_and_delete_empty(path_: str):
 #     unable_to_delete = []
 #     for root, dirs, files in walk(path_):

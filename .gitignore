@@ -4,3 +4,4 @@ release
 dist
 main.spec
 __pycache__
+.venv
